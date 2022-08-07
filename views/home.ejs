@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <%- include('partials/head', { title: 'Home' }); -%>
+  <body>
+    <%- include('partials/header'); -%>
+    <main class="ques_container">
+      <h1>Questions</h1>
+      <div class="question_list">
+
+        <% if (questions.length > 0) { %>
+          <% questions.forEach((question, i) => { %>
+            <div class="question">
+              <p class="question_heading">
+                Q(<%= i + 1 %>):&nbsp;&nbsp;
+                <%= question.question %>
+              </p>
+              <div class="question_opt">
+                <p class="counts">Attempts: <%= question.count %></p>
+                <a href="/details/<%= question._id %>">Other Answers</a>
+                <% if (isLoggedIn && !user.attempts.includes(question._id)) { %>
+                  <a href="/submit/<%= question._id %>">Submit Answer</a>
+                <% } %>
+              </div>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <p class="no-result">No Question to Show. Nothing is Posted By anyone.</p>
+        <% } %>
+
+      </div>
+
+      <% if (questions.length > 0) { %>
+        <div class="pagination">
+          <a href="?page=<%= (page - 1) %>" class="pagination_btn <%= (page - 1) > 0 ? 'prev' : 'disable' %>">&#8249;</a>
+          <a href="?page=<%= page %>" class="pagination_page">Page <%= page %></a>
+          <a href="?page=<%= (page + 1) %>" class="pagination_btn <%= ( page * limitResults ) < questionCount ? 'next' : 'disable' %>">&#8250;</a>
+        </div>
+      <% } %>
+    </main>
+  </body>
+  <%- include('partials/footer'); -%>
+</html>

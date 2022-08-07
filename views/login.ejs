@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <%- include('partials/head', { title: 'Login' }); -%>
+  <body>
+    <%- include('partials/header'); -%>
+    <%
+      if (typeof error === 'undefined') {
+        error = {
+          password: '',
+          email: ''
+        };
+      }
+    %>
+    <form action="/login" method="post">
+      <h2>Login</h2>
+      <label for="email">Email</label>
+      <input type="text" name="email" value="<%= typeof email === 'undefined' ? "" : email %>"  />
+      <div class="error"><%= error.email %></div>
+      <label for="password">Password</label>
+      <input type="password" name="password" />
+      <div class="error"><%= error.password %></div>
+      <button>login</button>
+    </form>
+  </body>
+  <%- include('partials/footer'); -%>
+</html>

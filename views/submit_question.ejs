@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <%- include('partials/head', { title: 'Submit Question' }); -%>
+  <body>
+    <%- include('partials/header'); -%>
+    <main class="ques_container">
+      <form action="/submit/<%= qid %>" method="post" class="add_question">
+        <h3>Q: <%= question %></h3>
+        <textarea name="answer" placeholder="Answer..."></textarea>
+        <div class="warn">(Field must Not be Empty!)</div>
+        <div class="error"><%= error === '' ? '' : "Please Fulfill Answer Requirement!" %></div>
+        <button>Submit Answer</button>
+      </form>
+    </main>
+  </body>
+  <%- include('partials/footer'); -%>
+</html>

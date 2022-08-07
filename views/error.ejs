@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <%- include('partials/head', { title: 'Login' }); -%>
+  <body>
+    <%- include('partials/header'); -%>
+    <main class="error_screen">
+      <div class="error_img">
+        <img src="/assets/error.svg" alt="error">
+      </div>
+      <p class="error_code">Error <%= error_code %>!</p>
+      <p class="error_msg"><%= error_msg %></p>
+    </main>
+  </body>
+  <%- include('partials/footer'); -%>
+</html>

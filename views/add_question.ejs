@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <%- include('partials/head', { title: 'Add Question' }); -%>
+  <body>
+    <%- include('partials/header'); -%>
+    <main class="ques_container">
+      <form action="/add" method="post" class="add_question">
+        <h2>Add Questions</h2>
+        <textarea name="question" placeholder="Question..."></textarea>
+        <div class="warn">(Length must 20 characters!)</div>
+        <div class="error"><%= error === '' ? "" : error %></div>
+        <button>Submit Question</button>
+      </form>
+    </main>
+  </body>
+  <%- include('partials/footer'); -%>
+</html>

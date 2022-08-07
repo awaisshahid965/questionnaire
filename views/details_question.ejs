@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <%- include('partials/head', { title: 'Details' }); -%>
+  <body>
+    <%- include('partials/header'); -%>
+    <main class="ques_container">
+      <h1>Questions Details</h1>
+
+      <h3 class="bleft">Q: <%= question.question %> </h3>
+      <div class="question_list">
+
+        <% if (question.answers.length > 0) { %>
+          <% question.answers.forEach((attempt, i) => { %>
+            <div class="question bbottom <%= id === attempt.uid ? 'byme' : '' %>">
+              <p class="mb-some"><b>Answer <%= i + 1 %>:</b></p>
+              <p class="question_heading">
+                <span><%= attempt.answer %></span>
+              </p>
+              <p class="by">&mdash; added by <b><%= attempt.uname %></b></p>
+            </div>
+          <% }) %>
+        <% } else { %>
+          <p class="no-result">No Answer to Show. Question isn't Answered By anyone.</p>
+        <% } %>
+
+      </div>
+    </main>
+  </body>
+  <%- include('partials/footer'); -%>
+</html>
